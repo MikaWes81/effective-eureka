@@ -6,8 +6,9 @@ class bcolors:
     blue = '\33[34m'
     end = '\033[0m'
 
+placed_blue = 0
+placed_red = 0
 
-cord = [0,0]
 
 player_input_blue  = ["0","0","0","0","0","0","0","0","0","0",
                       "0","0","0","0","0","0","0","0","0","0",
@@ -154,26 +155,50 @@ def print_board_player_red_input():
 
 
 
-def place_ship():
-    cordinats = input
-    cord = cordinats.split(",")
-    if cordinats == "":
-        return 0
-    else:
-        return 1
+
 
 
 # 0 not correct
 
-def setup_board():
+
+
+def boot_blue():
+    print("Startposition:\n")
+    cordinats = input()
+    clear()
+    print("Endpunkt")
+    cordinats2 = input()
+    cord = cordinats.split(",")
+    cord2= cordinats2.split(",")
+    if cordinats2 or cordinats == "":
+        print("prese Enter un fortzufahren")
+        print("ungültige eingabe")
+        return
+    else:
+        if int(cord[0]) - int(cord2[0]) == 0 and int(cord[1]) - int(cord2[1]) !=0:
+            ent = abs(int(cord[1]) - int(cord2[1]))
+        elif int(cord2[1]) - int(cord[1]) == 0 and int(cord2[0]) - int(cord[0]) !=0:
+            ent =abs(int(cord[0]) - int(cord2[0]))
+        else:
+            print("prese Enter un fortzufahren")
+            print("ungültige eingabe")
+            return
+
+
+
+def setup_board_blue():
     print(bcolors.blau + "Blau" + bcolors.end )
-    print("Presse enter um fortzufahren")
+    print("Prese enter um fortzufahren")
     input()
     clear()
-    
+
+    if placed_blue == 14:
+        return 0
+    else:
+        boot_blue()
 
 
-setup_board()
+
 
 
 def info():
@@ -183,11 +208,20 @@ def info():
     print("y ist die Verticale cordinate")
     print("presse Enter um fortzufahren")
     input()
+    clear()
     print("wärend der phase wo die schiffen gesetzt werden")
     print("darf nur der aktive spieler das gerät und den bildschirm benutzen")
     print("presse Enter um fortzufahren")
     input()
+    clear()
+    print("für das plazieren der schiffe")
+    print("gibst du zuerst den Punkt ein wo das boot begint")
+    print("danach gibst du die kordinaten wo das boot endet ein")
+    print("presse enter um fortzufahren")
+    input()
+    clear()
     return
+
 
 
 #def setup():
