@@ -160,6 +160,20 @@ def print_board_player_red_input():
 
 # 0 not correct
 
+def blue_check():
+
+    for i in range(2,6):
+        if i == 2:
+            placed_blue = placed_blue + 1
+        elif i == 3:
+            placed_blue = placed_blue + 1
+        elif i == 4:
+            placed_blue = placed_blue + 1
+        elif i == 5:
+            placed_blue = placed_blue + 1
+    return
+
+
 
 
 def boot_blue():
