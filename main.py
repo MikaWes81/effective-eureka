@@ -55,101 +55,25 @@ player_red     =  ["0","0","0","0","0","0","0","0","0","0",
                    "0","0","0","0","0","0","0","0","0","0",
                    "0","0","0","0","0","0","0","0","0","0",]
 
-def print_board_player_red():
-    number = 1
-    print("    1 2 3 4 5 6 7 8 9 10")
-    print("")
-    print("1",end="   ")
-    line = 2
-    for x in range(10):
-        for y in range(10):
-            z = y + x - 2
-            if(number == 10):
-                print(player_red[z])
-                number = 1
-                if (line == 10):
-                    print(line, end="  ")
-                    line = line + 1
-
-                if (line != 11):
-                    print(line, end="   ")
-                    line = line + 1
-
-            else:
-                print(player_red[z],end=" ")
-                number = number + 1
-            
-def print_board_player_blue():
-    number = 1
-    print("    1 2 3 4 5 6 7 8 9 10")
-    print("")
-    print("1",end="   ")
-    line = 2
-    for x in range(10):
-        for y in range(10):
-            z = y + x - 2
-            if(number == 10):
-                print(player_blue[z])
-                number = 1
-                if (line == 10):
-                    print(line, end="  ")
-                    line = line + 1
-
-                if (line != 11):
-                    print(line, end="   ")
-                    line = line + 1
-
-            else:
-                print(player_blue[z],end=" ")
-                number = number + 1
-
-def print_board_player_blue_input():
-    number = 1
-    print("    1 2 3 4 5 6 7 8 9 10")
-    print("")
-    print("1",end="   ")
-    line = 2
-    for x in range(10):
-        for y in range(10):
-            z = y + x - 2
-            if(number == 10):
-                print(player_input_blue[z])
-                number = 1
-                if (line == 10):
-                    print(line, end="  ")
-                    line = line + 1
-
-                if (line != 11):
-                    print(line, end="   ")
-                    line = line + 1
-
-            else:
-                print(player_input_blue[z],end=" ")
-                number = number + 1
-def print_board_player_red_input():
-    number = 1
-    print("    1 2 3 4 5 6 7 8 9 10")
-    print("")
-    print("1",end="   ")
-    line = 2
-    for x in range(10):
-        for y in range(10):
-            z = y + x - 2
-            if(number == 10):
-                print(player_input_red[z])
-                number = 1
-                if (line == 10):
-                    print(line, end="  ")
-                    line = line + 1
-
-                if (line != 11):
-                    print(line, end="   ")
-                    line = line + 1
-
-            else:
-                print(player_input_red[z],end=" ")
-                number = number + 1
-
+def print_board_red():
+    line = 0
+    
+    höhe = 1       
+    print("  1 2 3 4 5 6 7 8 9 10")
+    for i in range(10):
+        print(str(höhe) + " " + player_red[line]+ " "+ player_red[line+1]+" "+player_red[line+2]+" "+player_red[line+3]+" "+player_red[line+4]+" "+player_red[line+5]+" "+player_red[line+6]+" "+player_red[line+7]+" "+player_red[line+8]+" "+player_red[line+9])
+        höhe += 1
+        line += 10
+def print_bord_blue():
+    line = 0
+    
+    höhe = 1        
+    print("   1 2 3 4 5 6 7 8 9 10")
+    for i in range(9):
+        print(str(höhe) + "  " + player_blue[line]+ " "+ player_blue[line+1]+" "+player_blue[line+2]+" "+player_blue[line+3]+" "+player_blue[line+4]+" "+player_blue[line+5]+" "+player_blue[line+6]+" "+player_blue[line+7]+" "+player_blue[line+8]+" "+player_blue[line+9])
+        höhe += 1
+        line += 10
+    print(str(höhe) + " " + player_blue[line]+ " "+ player_blue[line+1]+" "+player_blue[line+2]+" "+player_blue[line+3]+" "+player_blue[line+4]+" "+player_blue[line+5]+" "+player_blue[line+6]+" "+player_blue[line+7]+" "+player_blue[line+8]+" "+player_blue[line+9])
 
 #def set_player_blue
 
@@ -160,23 +84,12 @@ def print_board_player_red_input():
 
 # 0 not correct
 
-def blue_check():
-
-    for i in range(2,6):
-        if i == 2:
-            placed_blue = placed_blue + 1
-        elif i == 3:
-            placed_blue = placed_blue + 1
-        elif i == 4:
-            placed_blue = placed_blue + 1
-        elif i == 5:
-            placed_blue = placed_blue + 1
-    return
-
 
 
 
 def boot_blue():
+    global placed_blue
+    global player_blue
     print("Startposition:\n")
     cordinats = input()
     clear()
@@ -184,37 +97,85 @@ def boot_blue():
     cordinats2 = input()
     cord = cordinats.split(",")
     cord2= cordinats2.split(",")
-    if cordinats2 or cordinats == "":
-        print("prese Enter un fortzufahren")
-        print("ungültige eingabe")
-        return
-    else:
-        if int(cord[0]) - int(cord2[0]) == 0 and int(cord[1]) - int(cord2[1]) !=0:
-            ent = abs(int(cord[1]) - int(cord2[1]))
-        elif int(cord2[1]) - int(cord[1]) == 0 and int(cord2[0]) - int(cord[0]) !=0:
-            ent =abs(int(cord[0]) - int(cord2[0]))
-            fest = cord[1] -1
-            fest = fest * 10
 
-        if ent == 2:
+
+    if int(cord[0]) - int(cord2[0]) == 0 and int(cord[1]) - int(cord2[1]) !=0:
+        ent =abs(int(cord[1]) + int(cord2[1]))
+        if cord[1] > cord2[1]:
+            punkt = int(cord2[1])*10 -10
+        elif cord2[1]> cord[1]:
+            punkt = int(cord[1])*10 -10
+        if ent > 5:
+            print("prese Enter un fortzufahren")
+            print("ungültige eingabe")
+            return
+        elif ent < 2:
+            print("prese Enter un fortzufahren")
+            print("ungültige eingabe")
+            return
+        elif ent == 2:
             placed_blue = placed_blue + 1
+            for _ in range(1):
+                punkt += 1
+                player_blue[punkt+int(cord[0]) -2] ="*"
         elif ent == 3:
             placed_blue = placed_blue + 1
+            for _ in range(2):
+                punkt += 1
+                player_blue[punkt+int(cord[0]) -2] ="*"
         elif ent == 4:
             placed_blue = placed_blue + 1
+            for _ in range(3):
+                punkt += 1
+                player_blue[punkt+int(cord[0]) -2] ="*"
         elif ent == 5:
+            for _ in range(4):
+                punkt += 1
+                player_blue[punkt+int(cord[0]) -2] ="*"
+    elif int(cord2[1]) - int(cord[1]) == 0 and int(cord2[0]) - int(cord[0]) !=0:
+        ent =abs(int(cord[0]) + int(cord2[0]))
+        if cord[0] > cord2[0]:
+            punkt = int(cord2[0])
+            punkt += -2
+        elif cord2[0]> cord[0]:
+            punkt = int(cord[0])
+            punkt += -2
+        if ent > 5:
+            print("prese Enter un fortzufahren")
+            print("ungültige eingabe")
+            return
+        elif ent < 2:
+            print("prese Enter un fortzufahren")
+            print("ungültige eingabe")
+            return
+        elif ent == 2:
             placed_blue = placed_blue + 1
-            if cord[0] < cord2[0]:
-                for i in range(cord[0],cord2[0],1):
-                    
-                    player_blue[i-1+fest]
-                    
+            for _ in range(1):
+                punkt += 1
+                player_blue[punkt+int(cord[1]) *10 -10] ="*"
+        elif ent == 3:
+            placed_blue = placed_blue + 1
+            for _ in range(2):
+                punkt += 1
+                player_blue[punkt+int(cord[1]) *10 -10] ="*"
+        elif ent == 4:
+            placed_blue = placed_blue + 1
+            for _ in range(3):
+                punkt += 1
+                player_blue[punkt+int(cord[1]) *10 -10] ="*"
+        elif ent == 5:
+            for _ in range(4):
+                punkt += 1
+                player_blue[punkt+int(cord[1]) *10 -10] ="*"
 
-#            elif cord[0] > cord2[0]:
+
+    print_bord_blue()
+    boot_blue()
+         
 
   
 
-
+boot_blue()
 
 
 
