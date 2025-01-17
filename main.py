@@ -96,7 +96,7 @@ def print_bord_blue():
 def boot_blue():
     global placed_blue
     global player_blue
-    print("Startposition:\n")
+    print("Startposition:")
     cordinats = input()
     clear()
     print("Endpunkt")
@@ -105,11 +105,13 @@ def boot_blue():
     cord2 = cordinats2.split(",")
 
     if int(cord[0]) - int(cord2[0]) == 0 and int(cord[1]) - int(cord2[1]) != 0:
-        ent = abs(int(cord[1]) + int(cord2[1]))
+        ent = abs(int(cord[1]) - int(cord2[1]))+1
         if cord[1] > cord2[1]:
-            punkt = int(cord2[1]) * 10 - 10
+            punkt = int(cord2[1]) * 10 - 20
         elif cord2[1] > cord[1]:
-            punkt = int(cord[1]) * 10 - 10
+            punkt = int(cord[1]) * 10 - 20
+
+        print(str(ent))
         if ent > 5:
             print("prese Enter un fortzufahren")
             print("ungültige eingabe")
@@ -121,24 +123,28 @@ def boot_blue():
         elif ent == 2:
             placed_blue = placed_blue + 1
             for _ in range(1):
-                punkt += 1
-                player_blue[punkt + int(cord[0]) - 2] = "*"
+                punkt += 10
+                player_blue[punkt + int(cord[0]) - 1] = "*"
         elif ent == 3:
             placed_blue = placed_blue + 1
             for _ in range(2):
-                punkt += 1
-                player_blue[punkt + int(cord[0]) - 2] = "*"
+                punkt += 10
+                player_blue[punkt + int(cord[0]) - 1] = "*"
         elif ent == 4:
             placed_blue = placed_blue + 1
             for _ in range(3):
-                punkt += 1
-                player_blue[punkt + int(cord[0]) - 2] = "*"
+                punkt += 10
+                player_blue[punkt + int(cord[0]) - 1] = "*"
         elif ent == 5:
             for _ in range(4):
-                punkt += 1
-                player_blue[punkt + int(cord[0]) - 2] = "*"
+                punkt += 10
+                player_blue[punkt + int(cord[0]) - 1] = "*"
+
+
+
+
     elif int(cord2[1]) - int(cord[1]) == 0 and int(cord2[0]) - int(cord[0]) != 0:
-        ent = abs(int(cord[0]) + int(cord2[0]))
+        ent = abs(int(cord[0]) - int(cord2[0]))+1
         if cord[0] > cord2[0]:
             punkt = int(cord2[0])
             punkt += -2
