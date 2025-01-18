@@ -10,7 +10,12 @@ class bcolors:
 
 
 placed_blue = 0
+placed_blue_2 = 0
+placed_blue_3 = 0
+placed_blue_4 = 0
+placed_blue_5 = 0
 placed_red = 0
+
 
 #                     +1  +2  +3  +4  +5  +6  +7  +8  +9  +10
 player_input_blue = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0",  # +0
@@ -106,10 +111,15 @@ def boot_blue():
 
     if int(cord[0]) - int(cord2[0]) == 0 and int(cord[1]) - int(cord2[1]) != 0:
         ent = abs(int(cord[1]) - int(cord2[1]))+1
-        if cord[1] > cord2[1]:
-            punkt = int(cord2[1]) * 10 - 20
+        if cord[1] or cord2[1] == "10":
+            if cord2[1] == "10":
+                punk = int(cord[1])* 10 - 20
+            elif cord[1] == "10":
+                punk = int(cord2[1])* 10 - 20
+        elif cord[1] > cord2[1]:
+            punk = int(cord2[1]) * 10 - 20
         elif cord2[1] > cord[1]:
-            punkt = int(cord[1]) * 10 - 20
+            punk = int(cord[1]) * 10 - 20
 
         print(str(ent))
         if ent > 5:
@@ -121,36 +131,63 @@ def boot_blue():
             print("ungültige eingabe")
             return
         elif ent == 2:
-            placed_blue = placed_blue + 1
-            for _ in range(1):
-                punkt += 10
-                player_blue[punkt + int(cord[0]) - 1] = "*"
+            if placed_blue_2 == 4:
+                print("Du kannst keine Schiffe der länge 2 mehr plazieren")
+                boot_blue()
+            else:
+                placed_blue = placed_blue + 1
+                for _ in range(2):
+                    punk += 10
+                    player_blue[punk + int(cord[0]) - 1] = "*"
         elif ent == 3:
-            placed_blue = placed_blue + 1
-            for _ in range(2):
-                punkt += 10
-                player_blue[punkt + int(cord[0]) - 1] = "*"
+            if placed_blue_3 == 3:
+                print("Du kannst keine Schiffe der länge 2 mehr plazieren")
+                boot_blue()
+            else:
+                placed_blue = placed_blue + 1
+                for _ in range(3):
+                    punk += 10
+                    player_blue[punk + int(cord[0]) - 1] = "*"
         elif ent == 4:
-            placed_blue = placed_blue + 1
-            for _ in range(3):
-                punkt += 10
-                player_blue[punkt + int(cord[0]) - 1] = "*"
+            if placed_blue_4 == 2:
+                print("Du kannst keine Schiffe der länge 2 mehr plazieren")
+                boot_blue()
+            else:
+                placed_blue = placed_blue + 1
+                for _ in range(4):
+                    punk += 10
+                    player_blue[punk + int(cord[0]) - 1] = "*"
         elif ent == 5:
-            for _ in range(4):
-                punkt += 10
-                player_blue[punkt + int(cord[0]) - 1] = "*"
+            if placed_blue_5 == 1:
+                print("Du kannst keine Schiffe der länge 2 mehr plazieren")
+                boot_blue()
+            else:
+                placed_blue += 1
+                for _ in range(5):
+                    punk += 10
+                    player_blue[punk + int(cord[0]) - 1] = "*"
 
 
 
 
     elif int(cord2[1]) - int(cord[1]) == 0 and int(cord2[0]) - int(cord[0]) != 0:
         ent = abs(int(cord[0]) - int(cord2[0]))+1
-        if cord[0] > cord2[0]:
+        if cord[0] or cord2[0] == "10":
+            if cord2[0] == "10":
+                punkt = int(cord[0])
+                punkt += -2
+            elif cord[0] == "10":
+                punkt = int(cord2[0])
+                punkt += -2
+        elif cord[0] > cord2[0]:
             punkt = int(cord2[0])
             punkt += -2
+            print(str(cord2[0]))
         elif cord2[0] > cord[0]:
             punkt = int(cord[0])
             punkt += -2
+            print(str(cord[0]))
+        print(str(punkt))
         if ent > 5:
             print("prese Enter un fortzufahren")
             print("ungültige eingabe")
@@ -160,24 +197,41 @@ def boot_blue():
             print("ungültige eingabe")
             return
         elif ent == 2:
-            placed_blue = placed_blue + 1
-            for _ in range(1):
-                punkt += 1
-                player_blue[punkt + int(cord[1]) * 10 - 10] = "*"
+            if placed_blue_2 == 4:
+                print("Du kannst keine Schiffe der länge 2 mehr plazieren")
+                boot_blue()
+            else:
+                placed_blue = placed_blue + 1
+                for _ in range(2):
+                    punkt += 1
+                    player_blue[punkt + int(cord[1]) * 10 - 10] = "*"
         elif ent == 3:
-            placed_blue = placed_blue + 1
-            for _ in range(2):
-                punkt += 1
-                player_blue[punkt + int(cord[1]) * 10 - 10] = "*"
+            if placed_blue_3 == 3:
+                print("Du kannst keine Schiffe der länge 2 mehr plazieren")
+                boot_blue()
+            else:
+                placed_blue = placed_blue + 1
+                for _ in range(3):
+                    punkt += 1
+                    player_blue[punkt + int(cord[1]) * 10 - 10] = "*"
         elif ent == 4:
-            placed_blue = placed_blue + 1
-            for _ in range(3):
-                punkt += 1
-                player_blue[punkt + int(cord[1]) * 10 - 10] = "*"
+            if placed_blue_4 == 2:
+                print("Du kannst keine Schiffe der länge 2 mehr plazieren")
+                boot_blue()
+            else:
+                placed_blue = placed_blue + 1
+                for _ in range(4):
+                    punkt += 1
+                    player_blue[punkt + int(cord[1]) * 10 - 10] = "*"
         elif ent == 5:
-            for _ in range(4):
-                punkt += 1
-                player_blue[punkt + int(cord[1]) * 10 - 10] = "*"
+            if placed_blue_5 == 1:
+                print("Du kannst keine Schiffe der länge 2 mehr plazieren")
+                boot_blue()
+            else:
+                placed_blue += 1
+                for _ in range(5):
+                    punkt += 1
+                    player_blue[punkt + int(cord[1]) * 10 - 10] = "*"
 
     print_bord_blue()
     boot_blue()
